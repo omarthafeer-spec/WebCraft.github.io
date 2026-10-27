@@ -170,26 +170,6 @@
     document.body.prepend(scene);
   }
 
-  function setupProjects() {
-    const projects = [
-      { id: 'sufra', title: 'Sufra Restaurant', category: 'Restaurant · Original concept', image: 'assets/restaurant-room.jpg' },
-      { id: 'sahab', title: 'Sahab Coffee House', category: 'Coffee house · Original concept', image: 'assets/coffee-cup.jpg' },
-      { id: 'forn', title: 'Forn Bakery', category: 'Artisan bakery · Original concept', image: 'assets/bakery-bread.jpg' }
-    ];
-    $$('.project').forEach((card, index) => {
-      const item = projects[index];
-      if (!item) return;
-      const visual = $('.project-visual', card);
-      visual.className = 'project-visual';
-      visual.innerHTML = '<span class="project-brand">' + item.title + '</span>';
-      visual.style.backgroundImage = `url('${item.image}')`;
-      $('.project-info small', card).textContent = item.category;
-      $('.project-info h3', card).textContent = item.title;
-      card.href = 'concept.html?project=' + item.id;
-      card.setAttribute('aria-label', `Open ${item.title} project`);
-    });
-  }
-
   function totalFor(plan, addonIds = []) {
     return plans[plan].price + addonIds.reduce((sum, id) => sum + (extras[id]?.price || 0), 0);
   }
@@ -320,7 +300,6 @@
   setHonestContent();
   setupAmbientBackground();
   setupNavigation();
-  setupProjects();
   setupPricing();
   buildBlueprint();
   setupEnhancedMotion();
